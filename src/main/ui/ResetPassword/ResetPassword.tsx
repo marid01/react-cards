@@ -13,6 +13,7 @@ export const ResetPassword = () => {
     }
 
     return <div>Reset password
+
         <h3>It-incubator</h3>
         <h2>Forgot your password?</h2>
 
