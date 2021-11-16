@@ -1,15 +1,40 @@
 import React, {ChangeEvent, useState} from "react";
 import {SuperInputText} from "../common/SuperInputText/SuperInputText";
 import {SuperButton} from "../common/SuperButton/SuperButton";
-import { NavLink } from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {Path} from "../Routes/Routes";
+import {useDispatch, useSelector} from "react-redux";
+import {resetPasswordTC, setResetPasswordErrorAC} from "../../bll/resetPasswordReducer";
+import {RootStateType} from "../../bll/store";
+
 
 export const ResetPassword = () => {
+
+    const info = useSelector<RootStateType, string>(state => state.resetPassword.info)
+
+    const error = useSelector<RootStateType, string>(state => state.resetPassword.error)
+
+    const dispatch = useDispatch()
+
+    const message = `<div style="background-color: lime; padding: 15px">
+                    password recovery link: <a href='http://localhost:3000/#/set-new-password/$token$'>
+                    link</a></div>`
 
     const [email, setEmail] = useState('')
 
     const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.currentTarget.value)
+        dispatch(setResetPasswordErrorAC(''))
+    }
+
+    const onSubmit = () => {
+        dispatch(resetPasswordTC(email, message))
+    }
+
+    if (!!info) {
+
+        return <Redirect to={'/check-email'} />
+
     }
 
     return <div>Reset password
@@ -17,14 +42,18 @@ export const ResetPassword = () => {
         <h3>It-incubator</h3>
         <h2>Forgot your password?</h2>
 
-        <form>
+        <form onSubmit={onSubmit}>
 
             <label>
                 <SuperInputText value={email} placeholder={'Email'} onChange={onEmailChange}/>
-                <div>Enter your email address and we will send you further instruction</div>
+                {error !== ''
+                    ? <div style={{color: 'red', fontWeight: 500}}>{error}</div>
+                    : <div>Enter your email address and we will send you further instruction</div>
+                }
             </label>
 
-            <SuperButton type={'submit'} style={{width: '200px', borderRadius: '30px'}}>Send instruction</SuperButton>
+            <SuperButton type={'submit'} style={{width: '200px', borderRadius: '30px'}}
+            >Send instruction</SuperButton>
         </form>
 
         <p>Did you remember your password?</p>
