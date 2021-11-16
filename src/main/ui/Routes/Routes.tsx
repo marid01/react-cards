@@ -15,7 +15,7 @@ export enum Path {
   Registration = "/registration",
   Profile = "/profile",
   ResetPassword = "/resetPassword",
-  CreateNewPassword = "/set-new-password",
+  CreateNewPassword = "/set-new-password/:token",
   SuperComponents = "/superComponents",
   Error404 = "/404",
   CheckEmail = "/check-email",
