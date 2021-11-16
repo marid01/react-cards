@@ -7,15 +7,18 @@ import { ResetPassword } from "../ResetPassword/ResetPassword";
 import { CreateNewPassword } from "../CreateNewPassword/CreateNewPassword";
 import { SuperComponents } from "../SuperComponents/SuperComponents";
 import { LogIn } from "../LogIn/LogIn";
+import {CheckEmail} from "../ResetPassword/CheckEmail";
+
 
 export enum Path {
   LogIn = "/login",
   Registration = "/registration",
   Profile = "/profile",
   ResetPassword = "/resetPassword",
-  CreateNewPassword = "/createNewPassword",
+  CreateNewPassword = "/set-new-password",
   SuperComponents = "/superComponents",
   Error404 = "/404",
+  CheckEmail = "/check-email",
 }
 
 export const Routes = () => {
@@ -27,11 +30,9 @@ export const Routes = () => {
         <Route path={Path.Registration} render={() => <Registration />} />
         <Route path={Path.Profile} render={() => <Profile />} />
         <Route path={Path.ResetPassword} render={() => <ResetPassword />} />
-        <Route
-          path={Path.CreateNewPassword}
-          render={() => <CreateNewPassword />}
-        />
+        <Route path={Path.CreateNewPassword} render={() => <CreateNewPassword />}/>
         <Route path={Path.SuperComponents} render={() => <SuperComponents />} />
+        <Route path={Path.CheckEmail} render={() => <CheckEmail />} />
         <Route path={Path.Error404} render={() => <Error404 />} />
         <Redirect from={"*"} to={Path.Error404} />
       </Switch>
