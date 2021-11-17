@@ -1,11 +1,9 @@
 import React, {useEffect} from "react";
 import "./App.css";
 import {useDispatch} from "react-redux";
-import {Header} from "./Header/Header";
-import {Routes} from "./Routes/Routes";
-import {initializeTC} from "../bll/logInReducer";
-
-
+import {Header} from "..//Header/Header";
+import {Routes} from "../Routes/Routes";
+import { initializeTC } from "../../bll/logInReducer";
 
 export const App = () => {
 

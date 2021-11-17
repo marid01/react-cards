@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { App } from "./main/ui/App";
 import {Provider} from "react-redux";
 import {store} from "./main/bll/store";
 import { HashRouter } from "react-router-dom";
+import { App } from "./main/ui/app/App";
 
 ReactDOM.render(
     <Provider store={store}>
