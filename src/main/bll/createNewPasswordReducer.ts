@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {cardsAPI} from "../dal/passwordAPI";
+import {cardsAPI} from "../dal/password-api/passwordAPI";
 import {AxiosError} from "axios";
 
 type InitStateType = typeof initState;
