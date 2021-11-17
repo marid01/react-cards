@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./App.css";
-import { Provider } from "react-redux";
-import { HashRouter } from "react-router-dom";
-import { Header } from "./Header/Header";
-import { store } from "../bll/store";
-import { Routes } from "./Routes/Routes";
+import {useDispatch} from "react-redux";
+import {Header} from "./Header/Header";
+import {Routes} from "./Routes/Routes";
+import {initializeTC} from "../bll/logInReducer";
+
+
 
 export const App = () => {
-  return (
-    <div className="App">
-      <HashRouter>
-        <Provider store={store}>
-          <Header />
-          <Routes />
-        </Provider>
-      </HashRouter>
-    </div>
-  );
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(initializeTC())
+    }, [])
+
+    return (
+        <div className="App">
+            <Header/>
+            <Routes/>
+        </div>
+    );
 };
