@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {SuperInputText} from "../common/SuperInputText/SuperInputText";
 import {SuperButton} from "../common/SuperButton/SuperButton";
@@ -23,12 +23,13 @@ export const CreateNewPassword = () => {
     dispatch(setNewPasswordErrorAC(''));
   }
 
-  const onSubmitHandler = () => {
-    dispatch(createNewPasswordTC(password, token))
+  const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // prevent page reloading when button was pressed
+    dispatch(createNewPasswordTC(password, token));
   }
 
   if (info !== '') {
-    alert(info)
+    alert(info) // show success password change message
     return <Redirect to={'/login'} />
   }
 

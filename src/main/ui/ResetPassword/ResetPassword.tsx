@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {SuperInputText} from "../common/SuperInputText/SuperInputText";
 import {SuperButton} from "../common/SuperButton/SuperButton";
 import {NavLink, Redirect} from "react-router-dom";
@@ -27,11 +27,12 @@ export const ResetPassword = () => {
         dispatch(setResetPasswordErrorAC(''))
     }
 
-    const onSubmit = () => {
-        dispatch(resetPasswordTC(email, message))
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault(); // prevent page reloading when button was pressed
+        dispatch(resetPasswordTC(email, message));
     }
 
-    if (!!info) {
+    if (!!info) { // if user email has founded in database redirect to page with further instruction
 
         return <Redirect to={'/check-email'} />
 
