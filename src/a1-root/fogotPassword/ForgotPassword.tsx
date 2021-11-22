@@ -19,8 +19,8 @@ export const ForgotPassword: React.FC = React.memo(() => {
         email: '',
         from: 'test-front-admin <ai73a@yandex.by>',
         message: `<div style="background-color: lime; padding: 15px;">
-  <a href='marid01.github.io/react-cards/#/set-password/$token$'>
-  Password recower link
+  <a href='http://localhost:3000/#/set-new-password/$token$'>
+  Password recovery link
   </a></div>`
     });
 
